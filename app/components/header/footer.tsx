@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
@@ -16,10 +17,10 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold mb-4">Quick Links</h3>
           <nav className="flex flex-col space-y-2">
-            <a href="/" className="hover:text-indigo-400">Home</a>
-            <a href="/tools" className="hover:text-indigo-400">Tools</a>
-            <a href="/about" className="hover:text-indigo-400">About</a>
-            <a href="/contact" className="hover:text-indigo-400">Contact</a>
+            <Link href="/" className="hover:text-indigo-400">Home</Link>
+            <Link href="/tools" className="hover:text-indigo-400">Tools</Link>
+            <Link href="/about" className="hover:text-indigo-400">About</Link>
+            <Link href="/contact" className="hover:text-indigo-400">Contact</Link>
           </nav>
         </div>
 
@@ -27,15 +28,15 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold mb-4">Follow Us</h3>
           <div className="flex space-x-4">
-            <a href="https://twitter.com" className="hover:text-indigo-400">
+            <Link href="https://twitter.com" className="hover:text-indigo-400">
               <FaTwitter size={24} />
-            </a>
-            <a href="https://linkedin.com" className="hover:text-indigo-400">
+            </Link>
+            <Link href="https://linkedin.com" className="hover:text-indigo-400">
               <FaLinkedin size={24} />
-            </a>
-            <a href="https://github.com" className="hover:text-indigo-400">
+            </Link>
+            <Link href="https://github.com" className="hover:text-indigo-400">
               <FaGithub size={24} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

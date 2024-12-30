@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HeroSection() {
     return (
       <section className="relative bg-gray-900 text-white">
@@ -21,18 +23,18 @@ export default function HeroSection() {
             analytics.
           </p>
           <div className="flex justify-center space-x-4">
-            <a
+            <Link
               href="/register"
               className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 px-6 rounded-md text-lg"
             >
               Get Started
-            </a>
-            <a
+            </Link>
+            <Link
               href="/learn-more"
               className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-md text-lg"
             >
               Learn More
-            </a>
+            </Link>
           </div>
         </div>
       </section>

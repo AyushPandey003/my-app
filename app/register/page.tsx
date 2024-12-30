@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function RegisterPage() {
     return (
       <section className="bg-gray-100 py-12">
@@ -78,9 +80,9 @@ export default function RegisterPage() {
           <div className="text-center">
             <p className="text-gray-600">
               Already have an account?{" "}
-              <a href="/login" className="text-indigo-500 hover:underline">
+              <Link href="/login" className="text-indigo-500 hover:underline">
                 Login here
-              </a>
+              </Link>
             </p>
           </div>
         </div>

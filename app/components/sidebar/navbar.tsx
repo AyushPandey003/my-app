@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
@@ -10,7 +11,7 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <div className="text-2xl font-bold">
-          <a href="/" className="hover:text-indigo-400">DigitalForensics</a>
+          <Link href="/" className="hover:text-indigo-400">DigitalForensics</Link>
         </div>
 
         {/* Search Bar */}
@@ -34,18 +35,18 @@ export default function Navbar() {
 
         {/* Links (Desktop) */}
         <nav className="hidden md:flex items-center space-x-6">
-          <a
+          <Link
             href="/login"
             className="hover:text-indigo-400 transition-colors"
           >
             Sign In
-          </a>
-          <a
+          </Link>
+          <Link
             href="/register"
             className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors"
           >
             Register
-          </a>
+          </Link>
         </nav>
       </div>
 
@@ -53,18 +54,18 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden bg-gray-800">
           <nav className="flex flex-col space-y-2 py-4 px-6">
-            <a
+            <Link
               href="/login"
               className="hover:text-indigo-400 transition-colors"
             >
               Sign In
-            </a>
-            <a
+            </Link>
+            <Link
               href="/register"
               className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors"
             >
               Register
-            </a>
+            </Link>
           </nav>
         </div>
       )}

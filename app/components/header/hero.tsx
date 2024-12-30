@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
     return (
       <main className="bg-gray-100 text-gray-800">
@@ -10,12 +12,12 @@ export default function Hero() {
             <p className="text-lg md:text-xl mb-6">
               Empowering investigators with cutting-edge tools to solve financial fraud and tax evasion cases.
             </p>
-            <a
+            <Link
               href="/register"
               className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 px-6 rounded-md text-lg"
             >
               Get Started
-            </a>
+            </Link>
           </div>
         </section>
   
@@ -71,12 +73,12 @@ export default function Hero() {
             <p className="text-lg mb-6">
               Join thousands of professionals using our tools to combat financial crime.
             </p>
-            <a
+            <Link
               href="/register"
               className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 px-6 rounded-md text-lg"
             >
               Sign Up Now
-            </a>
+            </Link>
           </div>
         </section>
       </main>
