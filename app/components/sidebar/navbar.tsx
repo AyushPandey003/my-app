@@ -1,6 +1,6 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import { signOut } from "next-auth/react"; // Import signOut
 
@@ -65,7 +65,7 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu (Visible when isMenuOpen is true) */}
       {isMenuOpen && (
         <div className="md:hidden bg-gray-800">
           <nav className="flex flex-col space-y-2 py-4 px-6">
@@ -80,6 +80,12 @@ export default function Navbar() {
               className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors"
             >
               Register
+            </Link>
+            <Link
+              href="/dashboard"
+              className="hover:text-indigo-400 transition-colors"
+            >
+              Dashboard
             </Link>
 
             {/* Sign Out (Mobile) */}

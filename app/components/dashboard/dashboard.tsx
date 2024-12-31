@@ -1,5 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 export default function DashboardHeroSection() {
     const session=useSession();
@@ -30,18 +31,18 @@ export default function DashboardHeroSection() {
             Uncover financial fraud, analyze data, and make informed decisions.
           </p>
           <div className="flex justify-center space-x-4">
-            <a
+            <Link
               href="/reports"
               className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 px-6 rounded-md text-lg"
             >
               View Reports
-            </a>
-            <a
-              href="/settings"
+            </Link>
+            <Link
+              href="/tax-calculator"
               className="bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-md text-lg"
             >
-              Account Settings
-            </a>
+              Calculate Tax
+            </Link>
           </div>
         </div>
       </section>
