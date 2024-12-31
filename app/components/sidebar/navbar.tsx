@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import { signOut } from "next-auth/react"; // Import signOut
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,6 +48,20 @@ export default function Navbar() {
           >
             Register
           </Link>
+          <Link
+            href="/dashboard"
+            className="hover:text-indigo-400 transition-colors"
+          >
+            Dashboard
+          </Link>
+
+          {/* Sign Out */}
+          <button
+            onClick={() => signOut()}
+            className="hover:text-indigo-400 transition-colors"
+          >
+            Sign Out
+          </button>
         </nav>
       </div>
 
@@ -66,6 +81,14 @@ export default function Navbar() {
             >
               Register
             </Link>
+
+            {/* Sign Out (Mobile) */}
+            <button
+              onClick={() => signOut()}
+              className="hover:text-indigo-400 transition-colors"
+            >
+              Sign Out
+            </button>
           </nav>
         </div>
       )}
