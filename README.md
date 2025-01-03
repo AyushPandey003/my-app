@@ -26,7 +26,7 @@
 ### 1. Clone the Repository
 Clone the repository to your local machine:
 ```bash
-git clone https://github.com/your-username/taxview.git
+git clone https://github.com/AyushPandey003/my-app.git
 cd taxview
 ```
 
