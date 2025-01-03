@@ -1,7 +1,6 @@
 import React from 'react';
 
 interface Data {
-    // Define the structure of your data here
     [key: string]: string | number | boolean;
 }
 
