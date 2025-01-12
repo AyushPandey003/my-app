@@ -1,146 +1,148 @@
+# Multivendor Ecommerce Web App
 
-# TaxView - Digital Forensics Web App
+## Overview
+This project is a modern multivendor ecommerce web application that caters to three distinct roles: **Users**, **Farmers**, and **Admins**. The platform integrates advanced features and optimizations to deliver a seamless user experience. Below is a detailed breakdown of the technologies, features, and architecture used in the project.
 
-**TaxView** is a digital forensics web app designed to monitor fraudulent tax cases. It provides a comprehensive dashboard, role-based authentication, and a tax calculator tool with chart analysis. This app utilizes Next.js for the frontend and MongoDB for database management. It also integrates a fraud detection API to analyze financial data from CSV files and visualize results in beautiful charts.
+---
 
 ## Features
-- **User Authentication**: Role-based authentication with secure login.
-- **Fraud Detection**: Analyze financial records using anomaly detection and rule violation algorithms.
-- **Financial Reports**: Visualize financial data and anomalies in intuitive charts.
-- **File Upload**: Upload CSV files for analysis, with clear instructions on the required format.
-- **Interactive Dashboard**: A dashboard displaying key metrics and insights into tax-related data.
+
+### User Roles and Dashboards
+- **Users**:
+  - Browse products and make purchases.
+  - Post and view reviews on products.
+  - Read blogs on farmer training.
+  
+- **Farmers**:
+  - Manage product listings.
+  - Write and review training blogs.
+  - Access insights through dynamic charts.
+  
+- **Admins**:
+  - Oversee all platform activities.
+  - Manage users, products, and content.
+
+### Core Functionality
+- **Product Reviews**: Users can post and read reviews for individual products.
+- **Blog System**: Farmers can create blogs for training purposes, and users can read and review these blogs.
+- **Advanced Chatbots**:
+  - **RAG Bot**: Provides detailed product information.
+  - **Vercel AI SDK Bot**: Handles user complaints and product returns.
+- **Dynamic Components**: Enhance responsiveness and adaptability.
+- **Visualization Tools**:
+  - **D3.js** and **React ApexCharts**: For interactive and visually appealing charts and graphs.
+
+---
 
 ## Tech Stack
-- **Frontend**: Next.js, React, ApexCharts
-- **Backend**: FastAPI (for fraud detection)
-- **Database**: MongoDB
-- **Hosting**: Hugging Face Spaces (for API hosting)
 
-## Getting Started
+### Frontend
+- **Framework**: [Next.js](https://nextjs.org/) (v14.8, App Router architecture).
+- **UI Components**: [ShadCN UI](https://shadcn.dev/) for consistent and customizable design.
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) for lightweight and scalable state management.
+- **Styling**: [PostCSS](https://postcss.org/) for optimized and maintainable CSS.
+- **MDX**: For creating rich blog posts with embedded React components.
+
+### Backend
+- **ORM**: [Drizzle ORM](https://orm.drizzle.team/) for efficient database interactions.
+- **Database**: PostgreSQL for reliable and scalable data storage.
+- **API**:
+  - Dynamic API routes for secure data operations.
+  - Implemented optimizations like Incremental Static Regeneration (ISR) and useSWR for data fetching.
+
+### Optimizations
+- **useSWR**: Real-time data fetching with caching and revalidation.
+- **ISR**: Combines static and dynamic rendering for optimal performance.
+- **Dynamic Components**: Ensures components load only when needed, reducing initial load times.
+
+---
+
+## Installation and Setup
 
 ### Prerequisites
-- Node.js
-- MongoDB (for database setup)
-- Python (for FastAPI backend)
+- Node.js (>= 16.x)
+- PostgreSQL
+- Yarn or npm
 
-### 1. Clone the Repository
-Clone the repository to your local machine:
-```bash
-git clone https://github.com/AyushPandey003/my-app.git
-cd taxview
+### Steps
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repo/multivendor-ecommerce.git
+   cd multivendor-ecommerce
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   yarn install
+   # or
+   npm install
+   ```
+
+3. **Set up environment variables**:
+   Create a `.env` file in the root directory and add the following:
+   ```env
+   DATABASE_URL=your_postgres_connection_string
+   NEXT_PUBLIC_API_URL=your_api_url
+   VERCEL_AI_SDK_KEY=your_vercel_ai_sdk_key
+   ```
+
+4. **Run migrations**:
+   ```bash
+   npx drizzle-kit generate:pg
+   npx drizzle-kit up
+   ```
+
+5. **Start the development server**:
+   ```bash
+   yarn dev
+   # or
+   npm run dev
+   ```
+
+6. **Build for production**:
+   ```bash
+   yarn build
+   # or
+   npm run build
+   ```
+
+---
+
+## Folder Structure
+```
+multivendor-ecommerce/
+├── public/            # Static assets
+├── src/
+│   ├── components/    # Reusable components
+│   ├── pages/         # Next.js pages
+│   ├── styles/        # Global and module CSS
+│   ├── utils/         # Utility functions
+│   ├── api/           # API route handlers
+│   ├── hooks/         # Custom React hooks
+│   └── store/         # Zustand store
+├── drizzle/           # ORM migrations and schema
+└── package.json       # Project dependencies and scripts
 ```
 
-### 2. Install Frontend Dependencies
-Navigate to the frontend directory and install the required dependencies:
-```bash
-cd frontend
-npm install
-```
+---
 
-### 3. Install Backend Dependencies
-For the backend, install the necessary dependencies for FastAPI:
-```bash
-cd backend
-pip install -r requirements.txt
-```
+## Future Enhancements
+- Implement advanced analytics for admins.
+- Add support for multiple languages.
+- Enhance chatbot capabilities for more personalized interactions.
+- Introduce machine learning models for product recommendations.
 
-### 4. Set Up MongoDB
-- Create a MongoDB database for your app and configure the connection string in the backend's `.env` file.
-- If using a local MongoDB instance, ensure MongoDB is running.
-
-### 5. Start the FastAPI Server
-Navigate to the `backend` directory and run the FastAPI server:
-```bash
-cd backend
-uvicorn main:app --reload
-```
-
-### 6. Start the Frontend
-Navigate to the `frontend` directory and start the Next.js development server:
-```bash
-cd frontend
-npm run dev
-```
-Your app will now be running at `http://localhost:3000`.
-
-## API Usage
-The backend FastAPI server provides an endpoint for analyzing CSV files. You can upload CSV files containing financial data, and the server will return an analysis of anomalies and rule violations.
-
-### File Format
-The CSV file should have the following columns:
-- `income`
-- `expenses`
-- `deductions`
-
-Example:
-```csv
-income,expenses,deductions
-45000,48000,1500
-49376,50445,3357
-22261,58379,2987
-```
-
-### Endpoint: `/analyze`
-- **Method**: `POST`
-- **Request**: A CSV file with `income`, `expenses`, and `deductions` columns.
-- **Response**: A JSON object with anomalies and rule violations.
-
-Example response:
-```json
-{
-  "anomalies": [
-    {
-      "income": 45000,
-      "expenses": 48000,
-      "deductions": 1500,
-      "zscore": -2.1558996327205056,
-      "deduction_change": 0.0
-    }
-  ],
-  "violations": [
-    {
-      "income": 22261,
-      "expenses": 58379,
-      "deductions": 2987
-    }
-  ]
-}
-```
-
-### Visualizing Data
-Once the data is received, the frontend uses **ApexCharts** to plot beautiful and interactive line charts based on the financial records, including:
-- `Income`
-- `Expenses`
-- `Deductions`
-- `Z-Score`
-- `Deduction Change`
-
-## Deployment
-
-### Deploying FastAPI Backend
-1. **Dockerize** the FastAPI backend and deploy it on a cloud provider (e.g., AWS, GCP, DigitalOcean).
-2. **Hugging Face Spaces** is currently being used for hosting the backend for analysis (`https://ayush-003-taxview.hf.space/analyze`).
-
-### Deploying Frontend
-Deploy the frontend using a service like Vercel, Netlify, or AWS Amplify.
-
-### Environment Variables
-In both frontend and backend, you will need to set up environment variables for database credentials and API URLs.
-
-Example `.env` for FastAPI:
-```env
-MONGODB_URI="your_mongo_connection_string"
-GOOGLE_CLIENT_SECRET=""
-```
-
-## Contributing
-Feel free to fork the repo and submit pull requests. Contributions are welcome!
-
-### Steps to contribute:
-1. Fork the repository.
-2. Clone your fork and create a new branch.
-3. Make your changes and commit them.
-4. Push to your fork and open a pull request.
+---
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
+
+---
+
+## Contributions
+Contributions are welcome! Feel free to submit a pull request or open an issue to suggest improvements.
+
+---
+
+## Acknowledgments
+Special thanks to the creators of the libraries and frameworks used in this project.
